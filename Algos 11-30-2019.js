@@ -46,24 +46,39 @@ Note:
     0 <= N < 10^9
 */
 
-// function binaryToDecimal (num) {
-//   if (num <= 1) {
-//     return num;
-//   }
-//   let total = 0;
-//   let adder = 1;
-//   const stringNum = num.toString();
+function binaryToDecimal (num) {
+  if (num <= 1) {
+    return num;
+  }
+  let total = 0;
+  let adder = 1;
+  const stringNum = num.toString();
 
-//   for (let i = stringNum.length - 1; i >= 0; i -= 1) {
-//     const currentNum = stringNum[i];
-//     if (currentNum === '1') {
-//       total += adder;
-//     }
-//     adder *= 2;
-//   }
+  for (let i = stringNum.length - 1; i >= 0; i -= 1) {
+    const currentNum = stringNum[i];
+    if (currentNum === '1') {
+      total += adder;
+    }
+    adder *= 2;
+  }
 
-//   return total;
-// }
+  return total;
+}
+
+// convert decimal to binary i.e.
+// 1 --> 1
+// 2 --> 10
+// 3 --> 11
+// 4 --> 100
+// 5 --> 101
+// 6 --> 110
+// 7 --> 111
+// 8 --> 1000
+// 15 --> 1111
+// 16 --> 10000
+// 17 --> 10001
+// 20 --> 10101 [2, 4, 8, 16]
+
 
 const convertDecimalToBinaryString = function (num) {
   if (num === 0) {
@@ -122,7 +137,7 @@ const bitwiseComplement = function (num) {
 
 // console.log(convertDecimalToBinaryString(7));
 // console.log(convertBinaryToDecimal('1111'));
-console.log(bitwiseComplement(5555555555555555555555555));
+// console.log(bitwiseComplement(555555555555));
 
 const bitwiseComplementRemainder = function (num) {
   if (num === 0) {
@@ -138,4 +153,4 @@ const bitwiseComplementRemainder = function (num) {
   return highestDivisor - num - 1;
 };
 
-console.log(convertBinaryToDecimal('1000'));
+// console.log(convertBinaryToDecimal('1000'));
