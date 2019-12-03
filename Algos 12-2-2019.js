@@ -2,7 +2,7 @@
  * @param {string} text
  * @return {number}
  */
-const maxNumberOfBalloons = function(text) {
+const maxNumberOfBalloons = function (text) {
   let count = 0;
   const letterCount = {};
 
@@ -42,4 +42,33 @@ const maxNumberOfBalloons = function(text) {
   return count;
 };
 
+const maxNumberOfBalloonsMin = function (text) {
+  const map = new Map();
+  const lettersToCheck = 'balon';
+
+  for (let i = 0; i < text.length; i += 1) {
+    if (map.has(text[i])) {
+      map.set(text[i], map.get(text[i]) + 1);
+    } else {
+      map.set(text[i], 1);
+    }
+  }
+
+  let totalBalloons = Infinity;
+
+  for (let k = 0; k < lettersToCheck.length; k += 1) {
+    if (!map.has(lettersToCheck[k])) {
+      return 0;
+    }
+    if (lettersToCheck[k] === 'l' || lettersToCheck[k] === 'o') {
+      totalBalloons = Math.min(totalBalloons, Math.floor(map.get(lettersToCheck[k]) / 2));
+    } else {
+      totalBalloons = Math.min(totalBalloons, map.get(lettersToCheck[k]));
+    }
+  }
+
+  return totalBalloons;
+};
+
 console.log(maxNumberOfBalloons('loonbalxballpoon')); // --> 2
+console.log(maxNumberOfBalloonsMin('balon')); // --> 0
