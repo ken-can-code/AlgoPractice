@@ -10,7 +10,35 @@ const myMathMax = (numbers) => {
   return max;
 };
 
-console.log(myMathMax([7, 3, 4, 5]));
+// console.log(myMathMax([7, 3, 4, 5]));
+
+
+//  * Definition for a binary tree node.
+function TreeNode(val) {
+  this.val = val;
+  this.left = null;
+  this.right = null;
+}
+//  */
+/**
+ * @param {TreeNode} root
+ * @param {number} L
+ * @param {number} R
+ * @return {number}
+ */
+const rangeSumBST = function(root, L, R) {
+  let sum = 0;
+
+  if (root.val >= L && root.val <= R) {
+    sum += root.val;
+  }
+
+  sum += rangeSumBST(root.left, L, R);
+  sum += rangeSumBST(root.right, L, R);
+
+  return sum;
+};
+
 
 const binaryTreeLargerSumBranch = (arr) => {
   if (arr.length < 1) {
@@ -66,4 +94,4 @@ for (let i = 1; i < 35; i += 1) {
   testArray.push(i);
 }
 
-console.log(binaryTreeLargerSumBranch([3, 5, 7, 10, -1, 9]));
+// console.log(binaryTreeLargerSumBranch([3, 5, 7, 10, -1, 9]));
